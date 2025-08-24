@@ -11,6 +11,18 @@ importers:
       aframe:
         specifier: ^1.7.1
         version: 1.7.1
+      aframe-environment-component:
+        specifier: ^1.5.0
+        version: 1.5.0
+      aframe-extras:
+        specifier: ^7.6.0
+        version: 7.6.0
+      aframe-physics-system:
+        specifier: ^4.0.2
+        version: 4.0.2(aframe@1.7.1)(three@0.164.1)
+      aframe-room-component:
+        specifier: ^0.4.0
+        version: 0.4.0
     devDependencies:
       vite:
         specifier: ^7.1.2
@@ -294,9 +306,26 @@ packages:
   '@types/responselike@1.0.3':
     resolution: {integrity: sha512-H/+L+UkTV33uf49PH5pCAUBVPNj2nDBXTN+qS1dOwyyg24l3CcicicCA7ca+HMvJBZcFgl5r8e+RR6elsb4Lyw==}
 
+  aframe-environment-component@1.5.0:
+    resolution: {integrity: sha512-6Ir1EKgZ5iMwV/ia0TYp9M/iSeLfQ/FmEmVtI7XiYAvBkev8ASNeAEmZpOQ0xqM8Dq8FLIdFDdQ+v0L4GYPLHg==}
+
+  aframe-extras@7.6.0:
+    resolution: {integrity: sha512-IKRMWsU1DgxIYPDatFpB0JMErIGSh1tWoLx01rodOM5mgzqyEumlhphh5ouCwz0aFKdWQ8KxznECaXf4B+xwAw==}
+
+  aframe-physics-system@4.0.2:
+    resolution: {integrity: sha512-VMODEXlzEDLGs9MQ1yAWl08TuS3Chtx7+L/CTy3NAv4Zks+Ae9Qf4eu0vtN9aX5/1jiPswl5pzpcJQURZC67GA==}
+    peerDependencies:
+      aframe: '>=0.5.0'
+
+  aframe-room-component@0.4.0:
+    resolution: {integrity: sha512-gl9loYZUwBpSMiNKTwVgfu9U9h8dxerwdy5pbbkvhpOsZHw9UmEOSkvwRvdaOxOVNV0joYvL7aHBV4AQ8TTiYQ==}
+
   aframe@1.7.1:
     resolution: {integrity: sha512-dcc7PWI5z8pyJ0s2W0mUd8d83339frgMXhUvWr1yxkdgg6zSExkuQwsSJjiNn7XWKMUUqKYDvV/WzQQRA+OBXA==}
     engines: {node: '>= 4.6.0', npm: '>= 2.15.9'}
+
+  ammo-debug-drawer@0.1.0:
+    resolution: {integrity: sha512-GIfIf748qpfg++iXFzTB1p/M7ncJK5/X2qkg7mAQm4SPyhx93PSEejSEsZiPnk8eUUwlpyPSRMPDnpITMvlJCg==}
 
   an-array@1.0.0:
     resolution: {integrity: sha512-M175GYI7RmsYu24Ok383yZQa3eveDfNnmhTe3OQ3bm70bEovz2gWenH+ST/n32M8lrwLWk74hcPds5CDRPe2wg==}
@@ -321,6 +350,9 @@ packages:
   cacheable-request@6.1.0:
     resolution: {integrity: sha512-Oj3cAGPCqOZX7Rz64Uny2GYAZNliQSqfbePrgAQ1wKAihYmCUnraBtJtKcGR4xz7wF+LoJC+ssFZvv5BgF9Igg==}
     engines: {node: '>=8'}
+
+  cannon-es@0.9.1:
+    resolution: {integrity: sha512-wWzbWQJ4yDiIkmGiAEWVG8rKCLJv88C68JJmGVEBRXpGJZIwbcyWWP18zXZYpy9vYM8v/usupCTpbgMGcb1ogA==}
 
   centra@2.7.0:
     resolution: {integrity: sha512-PbFMgMSrmgx6uxCdm57RUos9Tc3fclMvhLSATYN39XsDV29B89zZ3KA89jmY0vwSGazyU+uerqwa6t+KaodPcg==}
@@ -473,6 +505,9 @@ packages:
     resolution: {integrity: sha512-lL4AjabAAFi313tjrtmgm/bxCRzp4l3vCshojfV/ij3IPdtnRqv6Chcw+SqJUhbe7g3o3BecaqCJYUNLswGBhQ==}
     hasBin: true
 
+  nipplejs@0.10.2:
+    resolution: {integrity: sha512-XGxFY8C2DOtobf1fK+MXINTzkkXJLjZDDpfQhOUZf4TSytbc9s4bmA0lB9eKKM8iDivdr9NQkO7DpIQfsST+9g==}
+
   normalize-url@4.5.1:
     resolution: {integrity: sha512-9UZCFRHQdNrfTpGg8+1INIg93B6zE0aXMVFkw1WFwvO4SlZywU6aLg5Of0Ap/PgcbSw4LNxvMWXMeugwMCX0AA==}
     engines: {node: '>=8'}
@@ -553,6 +588,23 @@ packages:
     resolution: {tarball: https://codeload.github.com/dmarcos/three-bmfont-text/tar.gz/eed4878795be9b3e38cf6aec6b903f56acd1f695}
     version: 3.0.0
 
+  three-pathfinding@1.3.0:
+    resolution: {integrity: sha512-LKxMI3/YqdMYvt6AdE2vB6s5ueDFczt/DWoxhtPNgRsH6E0D8LMYQxz+eIrmKo0MQpDvMVzXYUMBk+b86+k97w==}
+    peerDependencies:
+      three: 0.x.x
+
+  three-to-ammo@0.1.0:
+    resolution: {integrity: sha512-+XxlQdAlU20NHjA0As7tRUsTy9VutK6bhB+QiQx0vcET5m5t1l4/mmbXPy4aNnLnvRDWE3bepBvT8DC2OX15Jg==}
+
+  three-to-cannon@3.1.0:
+    resolution: {integrity: sha512-afIvLiI4svuxubPFzEDc/Wc23SEeHy0LqdE4PQiVFwyzqCHrl3em8hwYY7Mi24ceiIMdM2/+zlZzyAJZDwMT9w==}
+    peerDependencies:
+      cannon-es: ^0.9.1
+      three: ^0.115.0
+
+  three@0.164.1:
+    resolution: {integrity: sha512-iC/hUBbl1vzFny7f5GtqzVXYjMJKaTPxiCxXfrvVdBi1Sf+jhd1CAkitiFwC7mIBFCo3MrDLJG97yisoaWig0w==}
+
   tinyglobby@0.2.14:
     resolution: {integrity: sha512-tX5e7OM1HnYr2+a2C/4V0htOcSQcoSTH9KgJnVvNm5zm/cyEWKJ7j7YutsH9CxMdtOkkLFy2AHrMci9IM8IPZQ==}
     engines: {node: '>=12.0.0'}
@@ -607,6 +659,9 @@ packages:
         optional: true
       yaml:
         optional: true
+
+  webworkify@1.5.0:
+    resolution: {integrity: sha512-AMcUeyXAhbACL8S2hqqdqOLqvJ8ylmIbNwUIqQujRSouf4+eUFaXbG6F1Rbu+srlJMmxQWsiU7mOJi0nMBfM1g==}
 
   word-wrapper@1.0.7:
     resolution: {integrity: sha512-VOPBFCm9b6FyYKQYfn9AVn2dQvdR/YOVFV6IBRA1TBMJWKffvhEX1af6FMGrttILs2Q9ikCRhLqkbY2weW6dOQ==}
@@ -792,6 +847,27 @@ snapshots:
     dependencies:
       '@types/node': 24.3.0
 
+  aframe-environment-component@1.5.0: {}
+
+  aframe-extras@7.6.0:
+    dependencies:
+      nipplejs: 0.10.2
+      three: 0.164.1
+      three-pathfinding: 1.3.0(three@0.164.1)
+
+  aframe-physics-system@4.0.2(aframe@1.7.1)(three@0.164.1):
+    dependencies:
+      aframe: 1.7.1
+      ammo-debug-drawer: 0.1.0
+      cannon-es: 0.9.1
+      three-to-ammo: 0.1.0
+      three-to-cannon: 3.1.0(cannon-es@0.9.1)(three@0.164.1)
+      webworkify: 1.5.0
+    transitivePeerDependencies:
+      - three
+
+  aframe-room-component@0.4.0: {}
+
   aframe@1.7.1:
     dependencies:
       buffer: 6.0.3
@@ -803,6 +879,8 @@ snapshots:
       three-bmfont-text: https://codeload.github.com/dmarcos/three-bmfont-text/tar.gz/eed4878795be9b3e38cf6aec6b903f56acd1f695
     transitivePeerDependencies:
       - supports-color
+
+  ammo-debug-drawer@0.1.0: {}
 
   an-array@1.0.0: {}
 
@@ -828,6 +906,8 @@ snapshots:
       lowercase-keys: 2.0.0
       normalize-url: 4.5.1
       responselike: 1.0.2
+
+  cannon-es@0.9.1: {}
 
   centra@2.7.0(debug@4.4.1):
     dependencies:
@@ -998,6 +1078,8 @@ snapshots:
       minimist: 1.2.8
       new-array: 1.0.0
 
+  nipplejs@0.10.2: {}
+
   normalize-url@4.5.1: {}
 
   once@1.3.3:
@@ -1097,6 +1179,19 @@ snapshots:
       nice-color-palettes: 3.0.0
       quad-indices: 2.0.1
 
+  three-pathfinding@1.3.0(three@0.164.1):
+    dependencies:
+      three: 0.164.1
+
+  three-to-ammo@0.1.0: {}
+
+  three-to-cannon@3.1.0(cannon-es@0.9.1)(three@0.164.1):
+    dependencies:
+      cannon-es: 0.9.1
+      three: 0.164.1
+
+  three@0.164.1: {}
+
   tinyglobby@0.2.14:
     dependencies:
       fdir: 6.5.0(picomatch@4.0.3)
@@ -1121,6 +1216,8 @@ snapshots:
     optionalDependencies:
       '@types/node': 24.3.0
       fsevents: 2.3.3
+
+  webworkify@1.5.0: {}
 
   word-wrapper@1.0.7: {}
 
