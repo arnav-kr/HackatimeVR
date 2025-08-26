@@ -32,7 +32,7 @@ export default class Hackatime {
   }
 
   async current() {
-    const res = await fetch("http://localhost:3000/api/current-active");
+    const res = await fetch(`${window.location.origin}/api/current-active`);
     const data = await res.json();
     this.lastUpdated = Date.now();
     return data.count;
@@ -40,7 +40,7 @@ export default class Hackatime {
   // $("body main>div>div:nth-child(2)>div>div:nth-child(1)")
   async leaderboard(period = "daily", scope = "regional") {
     let data = [];
-    const res = await fetch(`http://localhost:3000/api/leaderboard?period=${period}&scope=${scope}`);
+    const res = await fetch(`${window.location.origin}/api/leaderboard?period=${period}&scope=${scope}`);
     const html = await res.text();
     const dom = new DOMParser().parseFromString(html, "text/html");
     const leaderboardContainer = dom.querySelector("body main>div>div:nth-child(2)>div");
