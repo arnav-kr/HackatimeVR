@@ -6,20 +6,91 @@
   <!-- <link rel="icon" type="image/svg+xml" href="/vite.svg" /> -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Vite App</title>
+  <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+  <script src="https://unpkg.com/aframe-environment-component@1.3.3/dist/aframe-environment-component.min.js"></script>
+  <script
+    src="https://unpkg.com/aframe-text-geometry-component@0.5.1/dist/aframe-text-geometry-component.min.js"></script>
+  <script src="https://unpkg.com/aframe-babia-components/dist/aframe-babia-components.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v7.2.0/dist/aframe-extras.min.js"></script>
+
 </head>
 
 <body>
-  <a-scene physics="debug: false; gravity: -9.8">
-    <a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9"></a-box>
-    <a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere>
-    <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
+  <div id="userPrompt" class="user-prompt-overlay">
+    <div class="user-prompt-card">
+      <h2>Enter Hackatime User ID</h2>
+      <input id="hackUserId" type="text" placeholder="e.g. U079SNC1PFF" />
+      <div class="user-prompt-actions">
+        <button id="startHackBtn">Start</button>
+        <button id="rememberToggle">Remember ✔</button>
+      </div>
+      <p class="user-prompt-note">ID is stored locally (no server). click Remember to toggle persistence</p>
+    </div>
+  </div>
+  <a-scene physics="debug: false; gravity: -9.8" id="scene">
     <a-plane position="0 0 0" rotation="-90 0 0" width="200" height="200" visible="false" static-body=""></a-plane>
-    <a-sky src="/BlueSkySkybox.png"></a-sky>
-    <a-entity id="grassContainer"
-      grass-stream="model: /models/floor_material.glb; tileSize: 5; radius: 3; updateThrottle: 250; scale: 1 1 1; y: 0"></a-entity>
+    <a-sky src="/sky-0.png"></a-sky>
     <a-entity id="playerRig" movement-controls kinematic-body position="0 1.6 0">
       <a-entity camera look-controls position="0 0 0"></a-entity>
+      <a-entity cursor="rayOrigin:mouse"></a-entity>
+      <a-entity laser-controls="hand: right"></a-entity>
     </a-entity>
+    <a-entity id="oiiaioCat" position="0 0 -8" scale="2.5 2.5 2.5" rotation="0 0 0" animation-mixer
+      gltf-model="url(/models/oiiaio.gltf)" oiiaio-cat="hoverScale: 1.1;"
+      sound="src: url(/oiiaio.mp3); autoplay: false; loop: true; volume: 1" position="3 0 -3">
+    </a-entity>
+    <a-entity id="boombox" position="-4.5 0 -3" scale="0.25 0.25 0.25" rotation="0 -30 0" animation-mixer
+      gltf-model="url(/models/boombox.glb)" boombox="hoverScale: 1.1;" boombox-player material="color: #666">
+    </a-entity>
+    <a-entity id="overview" position="4 0 0" rotation="0 -90 0">
+    </a-entity>
+    <a-entity>
+      <a-entity id="skyButton" position="-4.01 2 -2" rotation="0 60 0"
+        geometry="primitive: box; width: 0.8; height: 0.2; depth: 0.01" material="color: #222; opacity: 0.75"
+        sky-cycle-button=""></a-entity>
+      <a-text value="Change Sky" position="-4 2 -2" rotation="0 60 0" align="center" color="#FFF" width="1.2"
+        baseline="center" scale="1.25 1.25 1.25"></a-text>
+    </a-entity>
+    <a-entity>
+      <a-entity id="lastUpdated" position="-4.01 1.75 -2" rotation="0 60 0"
+        geometry="primitive: box; width: 0.8; height: 0.2; depth: 0.01"
+        material="color: #222; opacity: 0.75"></a-entity>
+      <a-text value="Last Updated" position="-4 1.75 -2" rotation="0 60 0" align="center" color="#FFF" width="1.2"
+        baseline="center" scale="1.25 1.25 1.25"></a-text>
+    </a-entity>
+    <a-entity>
+      <a-entity id="refreshStats" position="-4.01 1.5 -2" rotation="0 60 0"
+        geometry="primitive: box; width: 0.8; height: 0.2; depth: 0.01" material="color: #222; opacity: 0.75"
+        refresh-stats></a-entity>
+      <a-text value="Refresh Stats" position="-4 1.5 -2" rotation="0 60 0" align="center" color="#FFF" width="1.2"
+        baseline="center" scale="1.25 1.25 1.25"></a-text>
+    </a-entity>
+    <a-entity id="leaderboard" position="-5 0 1.5" rotation="0 120 0">
+      <a-entity position="0 0.3 0" rotation="0 0 0" geometry="primitive: box; width: 0.8; height: 0.2; depth: 0.01"
+        material="color: #222; opacity: 0.75">
+        <a-text value="Leaderboard" position="0 0 0.005" rotation="0 0 0" align="center" color="#FFF" width="1.2"
+          baseline="center" scale="1.25 1.25 1.25"></a-text>
+      </a-entity>
+      <a-entity id="userCards"></a-entity>
+      <a-entity id="userCardTemplate" position="0 2.5 0" rotation="0 0 0" visible="false" data-template="user-card">
+        <a-entity class="userBackground" geometry="primitive: box; width: 1.1; height: 0.15; depth: 0.01"
+          position="0 0 -0.01" material="color: #333; opacity: 0.9"></a-entity>
+        <a-text class="userRank" value="#" position="-0.5 0 0" rotation="0 0 0" align="center" color="#FFF" width="0.85"
+          baseline="center" scale="1.25 1.25 1.25"></a-text>
+        <a-entity class="userAvatar" geometry="primitive: circle; radius: 0.05"
+          material="transparent: true; side: double; opacity: 0.95" position="-0.385 0 0"></a-entity>
+        <a-text class="userName" value="@username" position="-0.2 0 0" rotation="0 0 0" align="center" color="#FFF"
+          width="0.8" baseline="center" scale="1.25 1.25 1.25"></a-text>
+        <a-text class="userHours" value="0h" position="0.39 0 0" rotation="0 0 0" align="center" color="#FFF"
+          width="0.8" baseline="center" scale="1.25 1.25 1.25"></a-text>
+      </a-entity>
+
+      <a-entity id="currentlyActive" position="-5 1 -0.5" rotation="0 90 0"
+        geometry="primitive: box; width: 0.9; height: 0.2; depth: 0.01" material="color: #222; opacity: 0.75">
+        <a-sphere radius="0.05" color="#4CAF50" position="-0.34 0 0"></a-sphere>
+        <a-text id="currentlyActiveLabel" value="Currently Active: --" position="0.05 0 0.005" rotation="0 0 0"
+          align="center" color="#FFF" width="1.2" baseline="center" scale="1.25 1.25 1.25"></a-text>
+      </a-entity>
   </a-scene>
   <script type="module" src="/src/main.js"></script>
 </body>
