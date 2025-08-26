@@ -99,7 +99,6 @@ async function loadLeaderboard() {
     }
     container.appendChild(card);
   });
-  highlightActiveLeaderboardButton();
 }
 function setUpdated(ts) {
   const label = document.querySelector('#lastUpdated + a-text, a-text[lastupdated]');
