@@ -166,13 +166,6 @@ window.loadHackatime = loadHackatime;
 window.setHackatimeUpdated = setUpdated;
 window.loadLeaderboard = loadLeaderboard;
 
-
-if (document.readyState === 'complete' || document.readyState === 'interactive') {
-  attachLeaderboardComponents();
-} else {
-  window.addEventListener('DOMContentLoaded', attachLeaderboardComponents);
-}
-
 function updateCurrentlyActive(count) {
   const label = document.getElementById('currentlyActiveLabel');
   if (label) label.setAttribute('value', `Currently Active: ${count}`);
